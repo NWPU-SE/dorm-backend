@@ -46,7 +46,7 @@ router.get('/dorm', function (req, res, next) {
     return res.sendStatus(400);
   }
   let sql;
-  if(dorm_id)
+  if(dorm_id && dorm_id != 0)
     sql = 'select dorm_name, dorm_index, dorm_id, message from dorm where `dorm_name`=? and `dorm_index`=? and `dorm_id`=?';
   else sql = 'select dorm_name, dorm_index, dorm_id, message from dorm where `dorm_name`=? and `dorm_index`=?';
   let sqldata = [dorm_name, dorm_index, dorm_id];
@@ -61,7 +61,7 @@ router.get('/dorm', function (req, res, next) {
 });
 
 router.post('/dorm', function (req, res, next) {
-  const { dorm_name, dorm_index, message } = req.body;
+  const { dorm_name, dorm_index, dorm_id, message } = req.body;
   if (!dorm_index || !dorm_name || !message) {
     return res.sendStatus(400);
   }

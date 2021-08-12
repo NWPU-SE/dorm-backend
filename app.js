@@ -3,12 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors')
 
 var apiRouter = require('./routes/api');
 
 var app = express();
 
 // view engine setup
+app.use( cors() )
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
